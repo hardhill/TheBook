@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30711.63
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POIApp", "POIApp\POIApp.csproj", "{857253C1-26BA-484A-8DE2-EE8DA37586F0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{857253C1-26BA-484A-8DE2-EE8DA37586F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{857253C1-26BA-484A-8DE2-EE8DA37586F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{857253C1-26BA-484A-8DE2-EE8DA37586F0}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{857253C1-26BA-484A-8DE2-EE8DA37586F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{857253C1-26BA-484A-8DE2-EE8DA37586F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{857253C1-26BA-484A-8DE2-EE8DA37586F0}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0F3B19A2-0291-4FBB-B46E-E4559C559E05}
+	EndGlobalSection
+EndGlobal

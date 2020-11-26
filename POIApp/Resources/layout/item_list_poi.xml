@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" 
+    android:layout_height="wrap_content"
+    android:id="@+id/relativeLayout1"
+    android:minHeight="25dp"
+    android:minWidth="25dp"
+    android:padding="5dp"
+    >
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginRight="25dp"
+        android:maxHeight="65dp"
+        android:maxWidth="65dp"
+        android:id="@+id/imgPOI"
+        android:contentDescription="description"
+        android:src="@android:drawable/ic_menu_mapmode"
+        
+        android:scaleType="centerCrop" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_toRightOf="@+id/imgPOI"
+        android:id="@+id/linearLayout1"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="5dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtName"
+            android:textSize="20sp"
+            android:text="@string/poi_name_hint" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtAdress"
+            android:textSize="14sp"
+            android:text="@string/address_hint"/>
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtDistance"
+        android:layout_toRightOf="@id/linearLayout1"
+        android:textSize="14sp"
+        android:text="@string/distance_hint"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:gravity="right" 
+        />
+</RelativeLayout>
