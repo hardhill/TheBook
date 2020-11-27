@@ -64,6 +64,7 @@
     <Compile Include="Classes\POIListViewAdapter.cs" />
     <Compile Include="Classes\PointofInterest.cs" />
     <Compile Include="Classes\POIService.cs" />
+    <Compile Include="DetailActivity.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -127,6 +128,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\menu\menu_poilistview.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\detail_poi.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

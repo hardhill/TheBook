@@ -46,7 +46,7 @@ namespace POIApp
             switch (item.ItemId)
             {
                 case Resource.Id.actionNew:
-                    // place holder for creating new poi
+                    StartActivity(typeof(DetailActivity));
                     return true;
                 case Resource.Id.actionRefresh:
                     DownloadPoisListAsync();
