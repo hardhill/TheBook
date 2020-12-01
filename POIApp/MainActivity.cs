@@ -1,20 +1,20 @@
 ﻿using Android.App;
+using Android.Content;
 using Android.OS;
-using Android.Support.V7.App;
 using Android.Runtime;
+using Android.Support.V7.App;
+using Android.Views;
 using Android.Widget;
+using Newtonsoft.Json;
 using POIApp.Classes;
 using System.Collections.Generic;
-using Android.Views;
-using System.Threading.Tasks;
-
 
 namespace POIApp
 {
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
     public class MainActivity : AppCompatActivity
     {
-        
+
         private ListView poiListView;
         private ProgressBar progressBar;
         private List<PointOfInterest> poiListData;
@@ -26,13 +26,25 @@ namespace POIApp
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.list_poi);
             poiListView = FindViewById<ListView>(Resource.Id.listViewPOI);
+            poiListView.ItemClick += PoiListView_ItemClick;
             progressBar = FindViewById<ProgressBar>(Resource.Id.progressBar);
             DownloadPoisListAsync();
         }
+
+        private void PoiListView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        {
+            PointOfInterest poi = poiListData[(int)e.Position];
+            Intent poiDetailIntent = new Intent(this, typeof(DetailActivity));
+            string data = JsonConvert.SerializeObject(poi);
+            poiDetailIntent.PutExtra("poi", data);
+            this.StartActivity(poiDetailIntent);
+
+        }
+
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-            
+
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
 
@@ -75,8 +87,8 @@ namespace POIApp
         }
 
 
-        
 
-        
+
+
     }
 }
