@@ -2,6 +2,7 @@
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
+using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
 using Newtonsoft.Json;
@@ -14,13 +15,14 @@ using System.Text;
 namespace POIApp
 {
     [Activity(Label = "DetailActivity")]
-    public class DetailActivity : Activity
+    public class DetailActivity : AppCompatActivity
     {
         EditText edtName, edtAddress, edtDescription, edtLongitude, edtLatitude;
         PointOfInterest _poi;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
 
             SetContentView(Resource.Layout.detail_poi);
             edtName = FindViewById<EditText>(Resource.Id.edtName);
