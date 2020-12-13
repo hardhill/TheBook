@@ -31,6 +31,12 @@ namespace POIApp
             DownloadPoisListAsync();
         }
 
+        protected override void OnResume()
+        {
+            base.OnResume();
+            DownloadPoisListAsync();
+        }
+
         private void PoiListView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
             PointOfInterest poi = poiListData[(int)e.Position];

@@ -54,9 +54,9 @@ namespace POIApp
                 case Resource.Id.actionSave:
                     SavePOI();
                     return true;
-                    
-                    
-            case Resource.Id.actionDelete:
+
+
+                case Resource.Id.actionDelete:
                     DeletePOI();
                     return true;
                 default:
@@ -66,13 +66,58 @@ namespace POIApp
 
         private void DeletePOI()
         {
+            Android.App.AlertDialog.Builder alertConfirm = new Android.App.AlertDialog.Builder(this);
+            alertConfirm.SetTitle("Confirm delete");
+            alertConfirm.SetCancelable(false);
+            alertConfirm.SetPositiveButton("OK", ConfirmDelete);
+            alertConfirm.SetNegativeButton("Cancel", delegate { });
+            alertConfirm.SetMessage(String.Format("Are you sure you want to delete {0}?", _poi.Name));
+                alertConfirm.Show();
+        }
+
+        protected void ConfirmDelete(object sender, EventArgs e)
+        {
             DeletePOIAsync();
         }
 
         private void SavePOI()
         {
-            double tempLatitude = Convert.ToDouble(edtLatitude.Text);
-            double tempLongitude = Convert.ToDouble(edtLongitude.Text);
+            double? tempLatitude = Convert.ToDouble(edtLatitude.Text);
+            double? tempLongitude = Convert.ToDouble(edtLongitude.Text);
+            bool errors = false;
+            if (String.IsNullOrEmpty(edtName.Text))
+            {
+                edtName.Error = "Name cannot be empty";
+                errors = true;
+            }
+            else
+            {
+                errors = false;
+                edtName.Error = null;
+            }
+            if (!String.IsNullOrEmpty(edtLatitude.Text))
+            {
+                try
+                {
+                    tempLatitude = Double.Parse(edtLatitude.Text);
+                    if ((tempLatitude > 90) | (tempLatitude < -90))
+                    {
+                        edtLatitude.Error = "Latitude must be a decimal value between - 90 and 90";
+                        errors = true;
+                    }
+                    else
+                        edtLatitude.Error = null;
+                }
+                catch
+                {
+                    edtLatitude.Error = "Latitude must be valid decimal number";
+                    errors = true;
+                }
+            }
+            if (errors)
+            {
+                return;
+            }
             _poi.Name = edtName.Text;
             _poi.Description = edtDescription.Text;
             _poi.Address = edtAddress.Text;
@@ -81,7 +126,7 @@ namespace POIApp
             CreateOrUpdatePOIAsync(_poi);
         }
 
-        
+
 
         protected void UpdateUI()
         {
@@ -133,8 +178,8 @@ namespace POIApp
             }
             else
             {
-               Toast toast = Toast.MakeText(this, "Something went Wrong!",ToastLength.Short);
-               toast.Show();
+                Toast toast = Toast.MakeText(this, "Something went Wrong!", ToastLength.Short);
+                toast.Show();
             }
         }
     }
